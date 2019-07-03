@@ -92,7 +92,7 @@ read verbose
 make -f Makefile1 ModelSubsetTest 
 #cat garbage
 
-timeout 5 java ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
+timeout 5 ./ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
 cat SubsetTest-out.txt
 
 #rm -f *out[0-9].txt
