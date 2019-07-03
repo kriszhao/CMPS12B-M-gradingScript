@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SRCDIR=https://raw.githubusercontent.com/bxji/cmps012b-pt.s19.grading/master/pa1/
+SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa1/
 
 NUMTESTS=8
 PNTSPERTEST=5
@@ -11,7 +11,7 @@ if [ ! -e backup ]; then
   mkdir backup
 fi
 
-cp *.java Makefile backup   # copy all files of importance into backup
+cp *.c Makefile backup   # copy all files of importance into backup
 
 for NUM in $(seq 1 $NUMTESTS); do
     curl $SRCDIR/infile$NUM.txt > infile$NUM.txt
@@ -19,7 +19,8 @@ for NUM in $(seq 1 $NUMTESTS); do
     curl $SRCDIR/modelunit-out$NUM.txt > modelunit-out$NUM.txt
 done
 
-curl $SRCDIR/ModelSubsetTest.java > ModelSubsetTest.java
+curl $SRCDIR/ModelSubsetTest.c > ModelSubsetTest.c
+curl $SRCDIR/Makefile1 > Makefile1
 echo ""
 echo ""
 
@@ -29,12 +30,8 @@ if [ ! -e Subset ] || [ ! -x Subset ]; then # exist and executable
   echo ""
   echo "Makefile doesn't correctly create Executable!!!"
   echo ""
-  rm -f *.class
-  javac -Xlint *.java
-  echo "Main-class: Subset" > Manifest
-  jar cvfm Subset Manifest *.class
-  rm Manifest
-  chmod +x Subset
+  rm -f *.o
+  gcc -std=c99 -Wall -g Subset.c -o Subset > garbage &>> garbage
 fi
 
 echo ""
@@ -80,9 +77,9 @@ echo ""
 
 make clean
 
-if [ -e Subset ] || [ -e *.class ]; then
+if [ -e Subset ] || [ -e *.o ]; then
   echo "WARNING: Makefile didn't successfully clean all files"
-  rm -f Subset *.class
+  rm -f Subset *.o
 fi
 
 echo ""
@@ -91,7 +88,8 @@ echo ""
 echo "Press Enter To Continue with SubsetTest Results"
 read verbose
 
-javac *.java >> garbage &>> garbage
+#javac *.java >> garbage &>> garbage
+make -f Makefile1 ModelSubsetTest
 cat garbage
 
 timeout 5 java ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
@@ -99,4 +97,4 @@ cat SubsetTest-out.txt
 
 #rm -f *out[0-9].txt
 
-rm -f *.class ModelSubsetTest* garbage*
+rm -f *.o ModelSubsetTest* garbage*
