@@ -380,7 +380,7 @@ void end_program(uint8_t argc) {
                 if (!strcmpn(c, "{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}\n\0",18))
                     return 3;
                 
-            } else if (test == printSubsets1_test) {
+            } else if (test == printSubsets3_test) {
                 int test_status = -1;
 
                 
@@ -436,7 +436,7 @@ void end_program(uint8_t argc) {
                 return test_status;
 
 
-            } else if (test == printSubsets3_test) {
+            } else if (test == printSubsets1_test) {
                 int test_status = -1;
                 char *name2 = "unit-out5.txt";
                 // PrintStream o5 = new PrintStream(new File("unit-out5.txt"));
