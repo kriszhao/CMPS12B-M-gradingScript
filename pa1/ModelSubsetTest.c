@@ -9,6 +9,9 @@
 #include <signal.h>
 #include <setjmp.h>
 #include <stdbool.h>
+#include <fcntl.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #define bool _Bool
 #define main main_ignore
 #include "Subset.c"
@@ -40,16 +43,64 @@ enum Test_e {
   NUM_TESTS,
 };
 
-void strtrim(char *str) {
-  int index = strlen(str) - 1;
-  while (index >= 0 && isspace(str[index])) {
-    index--;
-  }
-  if (index < 0) index = 0;
-  else if (str[index] != '\0' && !isspace(str[index])) index++;
-  str[index] = '\0';
-}
+char* strtrim(char *str) {
+   // printf("4444:%s\n",str);
+    char *ptr = malloc((strlen(str)+1)*sizeof(char));
+    int i,j=0;
+    for(i=0;str[i]!='\0';i++)
+    {
+        if (!isspace(str[i]) && str[i] != '\t'&&str[i] != '\n') 
+        ptr[j++]=str[i];
+    } 
+    ptr[j]='\0';
+   // str=ptr;
+     //printf("555:%s\n",ptr);
+     return ptr;
+  // int index = strlen(str) - 1;
+  // int i = 0;
+  // //int j = 0;
+  // char *str1;
+  // while (i<index) {
+  //   if(str[i]!='\0'&&str[i]!='\n'&&!isspace(str[i]))
+  //       {
+  //           *str1 = str[i];
+  //           str1++;
+  //       }
 
+  //   i++;
+  // }
+  //            printf("44444 %s\n",str);
+
+  // if (index < 0) index = 0;
+  //  if (str[index] != '\0' && !isspace(str[index])) {
+  //   *str1 = str[index];
+  //   str1++;
+  //  }
+  //             printf("5555\n");
+
+  //  *str1 = '\0';
+  //  strcpy(str,str1);
+  //  printf("66666 %s\n",str);
+}
+// bool strcmpIgSpace(char *a,char *b) {
+//     // int len1 = strlen(str1);
+//     // int len2 = strlen(str2);
+//     // int i=0; int j=0;
+
+//     // while(i<len1&&j<len2&&str1[i]!='\n'&&str2[j]!='\n'){
+//     //     if(str1[i]!=str2[j]){
+//     //         return 0;
+//     //     }
+//     //     i++;
+//     //     j++;
+//     //     if(i<len1&&isspace(str1[i]))
+//     //         i++;
+//     //     if(j<len2&&isspace(str2[j]))
+//     //         j++;
+
+//     // }
+
+//    }
 char *testName(int test) {
 
         if (test == setToString1_test)
@@ -66,145 +117,50 @@ char *testName(int test) {
         return "";
     }
 
-     bool strcmpn(int a[], char* b,int n) {
+     bool strcmpn(int ss[], char* s,int n) {
         //char* temp = NULL;
         //itoa()
        
-        int SIZE = 255;
+        int SIZE = 500;
 
         char buffer[SIZE];
+        memset( buffer, '\0', sizeof(char)*SIZE );
         //char *buffer = NULL;
-        freopen("/dev/null", "a", stdout);
-        setbuf(stdout, buffer);
-        printSet(a,  n);
-        freopen ("/dev/tty", "a", stdout);
-        printf("sdsf: %s\n",buffer);
-        if(strcmp(buffer,b) == 0)
+        //fflush(stdout);
+        // freopen("/dev/null", "a", stdout);
+        // setbuf(stdout, buffer);
+        // printSet(ss,  n);
+        // freopen ("/dev/tty", "a", stdout);
+        //printSet(ss,  n);
+        int stdout_save = dup(STDOUT_FILENO); //save the stdout state
+        freopen("NUL", "a", stdout); //redirect stdout to null pointer
+        setvbuf(stdout, buffer, _IOFBF, 1024); //set buffer to stdout
+        printSet(ss,  n);
+        freopen("NUL", "a", stdout); //redirect stdout to null again
+        dup2(stdout_save, STDOUT_FILENO); //restore the previous state of stdout
+        setvbuf(stdout, NULL, _IONBF, 1024); //disable buffer to print to screen instantly
+           //printf("22222\n");
+        //fflush(stdout);
+       char *buffer_trim =strtrim(buffer);
+       //printf("333 %s:%s\n", buffer,s);
+       char *s_trim = strtrim(s);
+       // printf("333 %s:%s\n", buffer_trim,s_trim );
+        if(strcmp(buffer_trim,s_trim) == 0)
             return 1;
+         //printf("your result: %s",buffer);
+         //printf("correct: %s",s);
         return 0;
+
+        //     freopen("/dev/null", "a", stdout);
+        // setbuf(stdout, buffer);
+        // printSet(a,  n);
+        // freopen ("/dev/tty", "a", stdout);
+        // printf("sdsf: %s\n",buffer);
+        // if(strcmp(buffer,b) == 0)
+        //     return 1;
+        // return 0;
     }
 
-    int runTest(int test) {
-        //int B[5];
-        //int B1[6];
-
-            if (test == setToString1_test) {
-
-                int a[] = { 0, 0, 0, 0 };
-                int b[] = { 0, 1, 1, 1 };
-                int c[] = { 0, 0, 1, 0 };
-                int d[1];
-                int e[2000];
-                int f[] = { 0, 1 };
-
-                if (!strcmpn(a, "{}\n",3) &&
-                    !strcmpn(a, "{ }\n",3))
-                    return 1;
-                if (!strcmpn(b, "{1, 2, 3}\n",3))
-                    return 2;
-                if (!strcmpn(c, "{2}\n",3))
-                    return 3;
-                if (!strcmpn(d, "{}\n",3) && 
-                    !strcmpn(d, "{ }\n",3))
-                    return 4;
-                if (!strcmpn(e, "{}\n",3) &&
-                    !strcmpn(e, "{ }\n",3))
-                    return 5;
-                if (!strcmpn(f, "{1}\n",3))
-                    return 6;
-
-                e[1999] = 1;
-
-                if (!strcmpn(e, "{1999}\n",3))
-                    return 7;
-
-            } else if (test == setToString2_test) {
-                // not actually hard. there's just nothing to test...
-
-                int a[] = { 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
-                int b[] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 };
-                int c[] = { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
-
-                if (!strcmpn(a, "{2, 4, 6, 8, 10, 12, 14, 16, 18}\n",18))
-                    return 1;
-                if (!strcmpn(b, "{1, 3, 5, 7, 9, 11, 13, 15, 17}\n",18))
-                    return 2;
-                if (!strcmpn(c, "{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}\n",18))
-                    return 3;
-                
-            } else if (test == printSubsets1_test) {
-                int test_status = -1;
-
-                // int fd;
-                // char *name = "unit-out1.txt";
-                
-                // fflush(stdout);
-                // int stdout_fd = dup(STDOUT_FILENO);
-                // int redir_fd = open(name, O_WRONLY);
-                // dup2(redir_fd, STDOUT_FILENO);
-                // close(redir_fd);
-                // B[1] = 1;
-                // printSubsets(B, 1, 2);
-                // fflush(stdout);
-                // dup2(stdout_fd, STDOUT_FILENO);
-                // close(stdout_fd);
-                
-
-                // test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
-
-                return test_status;
-
-            } else if (test == printSubsets2_test) {
-                int test_status = -1;
-
-                // PrintStream o4 = new PrintStream(new File("unit-out4.txt"));
-                // System.setOut(o4);
-
-                // B1[1] = 1;
-                // B1[3] = 1;
-
-                // Subset.printSubsets(B1, 1, 6);
-                // o4.close();
-                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-                // test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
-
-                return test_status;
-
-            } else if (test == printSubsets3_test) {
-                int test_status = -1;
-
-                // PrintStream o5 = new PrintStream(new File("unit-out5.txt"));
-                // System.setOut(o5);
-
-                // B1[1] = 1;
-                // B1[3] = 1;
-                
-                // Subset.printSubsets(B1, 1, 5);
-                // o5.close();
-                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-                // test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
-
-                return test_status;
-            }
-            // if (verbose) {
-            //     printf("\nUnfortunately your program crashed on test %s With an exception of:\n",  testName(test));
-            //     printf("\n");
-            //     // System.out.println(
-            //     //         "\nUnfortunately your program crashed on test " + testName(test) + " With an exception of:\n");
-            //     // e.printStackTrace();
-            //     // System.out.println();
-            // }
-            return 255;
-
-       // } catch (StackOverflowError s) {
-            // if (verbose) {
-            //     System.out.println("\nUnfortunately your program crashed on test " + testName(test)
-            //             + " With a stack overflow error\n");
-            // }
-            // return 255;
-        //}
-        return 0;
-    }
 
 // String compareFiles(Scanner file1, Scanner file2) {
 //         String lineA;
@@ -229,47 +185,93 @@ char *testName(int test) {
 //         }
 //         return comparison;
 //     }
-void compareFiles(FILE *fp1, FILE *fp2) 
+int compareFiles(FILE *fp1, FILE *fp2) 
 { 
     // fetching character of two file 
     // in two variable ch1 and ch2 
-    char ch1 = getc(fp1); 
-    char ch2 = getc(fp2); 
+    // char ch1 = getc(fp1); 
+    // char ch2 = getc(fp2); 
   
-    // error keeps track of number of errors 
-    // pos keeps track of position of errors 
-    // line keeps track of error line 
-    int error = 0, pos = 0, line = 1; 
+    // // // error keeps track of number of errors 
+    // // // pos keeps track of position of errors 
+    // // // line keeps track of error line 
+    // // int error = 0, pos = 0, line = 1; 
   
-    // iterate loop till end of file 
-    while (ch1 != EOF && ch2 != EOF) 
-    { 
-        pos++; 
+    // // // iterate loop till end of file 
+    // while (ch1 != EOF && ch2 != EOF) 
+    // { 
+    //     pos++; 
+    //     if(ch1==' ')
+    //         ch1 = getc(fp1);
+    //     if(ch2==' ')
+    //         ch2 = getc(fp2);
+    //     // if both variable encounters new 
+    //     // line then line variable is incremented 
+    //     // and pos variable is set to 0 
+    //     if (ch1 == '\n' && ch2 == '\n') 
+    //     { 
+    //         line++; 
+    //         pos = 0; 
+    //     } 
   
-        // if both variable encounters new 
-        // line then line variable is incremented 
-        // and pos variable is set to 0 
-        if (ch1 == '\n' && ch2 == '\n') 
-        { 
-            line++; 
-            pos = 0; 
-        } 
+    //     // if fetched data is not equal then 
+    //     // error is incremented 
+    //     if (ch1 != ch2) 
+    //     { 
+    //         error++; 
+    //         printf("Line Number : %d \tError"
+    //            " Position : %d \n", line, pos); 
+    //     } 
   
-        // if fetched data is not equal then 
-        // error is incremented 
-        if (ch1 != ch2) 
-        { 
-            error++; 
-            printf("Line Number : %d \tError"
-               " Position : %d \n", line, pos); 
-        } 
+    //     // fetching character until end of file 
+    //     ch1 = getc(fp1); 
+    //     ch2 = getc(fp2); 
+    // } 
   
-        // fetching character until end of file 
-        ch1 = getc(fp1); 
-        ch2 = getc(fp2); 
-    } 
-  
-    printf("Total Errors : %d\t", error); 
+    // printf("Total Errors : %d\t", error); 
+
+    char * line1 = NULL;
+    size_t len1 = 0;
+    char * line2 = NULL;
+    size_t len2 = 0;
+    ssize_t read1;
+    ssize_t read2;
+    if (fp1 == NULL)
+        exit(EXIT_FAILURE);
+    if (fp2 == NULL)
+        exit(EXIT_FAILURE);
+
+    while ((read1 = getline(&line1, &len1, fp1)) != -1&&(read2 = getline(&line2, &len2, fp2)) != -1) {
+        //printf("Retrieved line of length %zu:\n", read);
+        char *trim1 =strtrim(line1);
+       //printf("333 %s:%s\n", buffer,s);
+       char *trim2 = strtrim(line2);
+       // printf("333 %s:%s\n", buffer_trim,s_trim );
+        if(strcmp(trim1,trim2) != 0)
+            return 1;
+         //printf("your result: %s",buffer);
+         //printf("correct: %s",s);
+      
+        
+    }
+
+    while ((read1 = getline(&line1, &len1, fp1)) != -1) {
+        //printf("Retrieved line of length %zu:\n", read);
+            return 1;
+         //printf("your result: %s",buffer);
+         //printf("correct: %s",s);     
+        
+    }
+    while ((read2 = getline(&line2, &len2, fp2)) != -1) {
+        //printf("Retrieved line of length %zu:\n", read);
+            return 1;
+         //printf("your result: %s",buffer);
+         //printf("correct: %s",s);     
+        
+    }
+    free(line1);
+    free(line2);
+    return 0;
 } 
 int CheckResult(char* file1, char* file2) {
         // try {
@@ -293,7 +295,11 @@ int CheckResult(char* file1, char* file2) {
        printf("Error : Files not open\n"); 
        return 255;
     }
-    return 1;
+   int status =  compareFiles(fp1, fp2);
+    fclose(fp1);
+    fclose(fp2);
+
+    return status;
 
 }
 void segfault_handler(int signal) { // everyone knows what this is
@@ -317,7 +323,7 @@ void end_program(uint8_t argc) {
 
   uint8_t totalScore = (MAXSCORE - NUM_TESTS * PNTSPERTEST) +
     testsPassed * PNTSPERTEST;
-  if (testStatus == 255) totalScore = 10;
+  if (testStatus == 255||totalScore==0) totalScore = 10;
   if (testStatus != 255 && argc == 2) {
     printf("\nYou passed %d out of %d tests\n", testsPassed, NUM_TESTS);
   } else if (argc == 2) {
@@ -329,6 +335,156 @@ void end_program(uint8_t argc) {
 
   exit(0);
 }
+
+    int runTest(int test) {
+        int A[5];
+        int A1[6];
+        //printSet(int B[], int n)
+            if (test == setToString1_test) {
+
+                int a[] = { 0, 0, 0, 0 };
+                //int a[] = { 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
+                int b[] = { 0, 1, 1, 1 };
+                int c[] = { 0, 0, 1, 0 };
+                int d[1]={0};
+                //int e[2000];
+                int f[] = { 0, 1 };
+
+                if (!strcmpn(a, "{}\n\0",3) &&
+                    !strcmpn(a, "{ }\n\0",3))
+                    return 1;
+               // printf("first\n");
+                if (!strcmpn(b, "{1, 2, 3}\n\0",3))
+                    return 2;
+                if (!strcmpn(c, "{2}\n\0",3))
+                    return 3;
+                if (!strcmpn(d, "{}\n\0",1) && 
+                    !strcmpn(d, "{ }\n\0",1))
+                    return 4;
+                if (!strcmpn(f, "{1}\n\0",1))
+                    return 5;
+
+                //e[1999] = 1;
+
+            } else if (test == setToString2_test) {
+                // not actually hard. there's just nothing to test...
+
+                int a[] = { 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1 };
+                int b[] = { 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0 };
+                int c[] = { 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 };
+                //printSet(a,18);
+                if (!strcmpn(a, "{2, 4, 6, 8, 10, 12, 14, 16, 18}\n\0",18))
+                    return 1;
+                if (!strcmpn(b, "{1, 3, 5, 7, 9, 11, 13, 15, 17}\n\0",18))
+                    return 2;
+                if (!strcmpn(c, "{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18}\n\0",18))
+                    return 3;
+                
+            } else if (test == printSubsets1_test) {
+                int test_status = -1;
+
+                
+                char *name = "unit-out1.txt";
+                
+                // fflush(stdout);
+                // int stdout_fd = dup(STDOUT_FILENO);
+                // int redir_fd = open(name, O_WRONLY);
+                // dup2(redir_fd, STDOUT_FILENO);
+                // close(redir_fd);
+                // B[1] = 1;
+                // printSubsets(B, 4,1, 2);
+                // fflush(stdout);
+                // dup2(stdout_fd, STDOUT_FILENO);
+                // close(stdout_fd);
+                int fd = open(name, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int stdout_fd = dup(STDOUT_FILENO);
+                dup2(fd, 1);   // make stdout go to file
+                //dup2(fd, 2);
+                A[1] = 1;
+                printSubsets(A, 4, 1, 2);
+                dup2(stdout_fd, STDOUT_FILENO);
+                close(fd);
+                test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
+                //if(test_status==0)
+                return test_status;
+
+            } else if (test == printSubsets2_test) {
+                int test_status = -1;
+                
+                char *name1 = "unit-out4.txt";
+                // PrintStream o4 = new PrintStream(new File("unit-out4.txt"));
+                // System.setOut(o4);
+
+                // B1[1] = 1;
+                // B1[3] = 1;
+
+                // Subset.printSubsets(B1, 1, 6);
+                // o4.close();
+                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+                // test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
+                int fd1= open(name1, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int stdout_fd1 = dup(STDOUT_FILENO);
+                dup2(fd1, 1);   // make stdout go to file
+                //dup2(fd, 2);
+                A1[1] = 1;
+                A1[3] = 1;
+                printSubsets(A1, 5, 1, 6);
+                dup2(stdout_fd1, STDOUT_FILENO);
+                close(fd1);
+                test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
+                //if(test_status==0)
+                return test_status;
+
+
+            } else if (test == printSubsets3_test) {
+                int test_status = -1;
+                char *name2 = "unit-out5.txt";
+                // PrintStream o5 = new PrintStream(new File("unit-out5.txt"));
+                // System.setOut(o5);
+
+                // B1[1] = 1;
+                // B1[3] = 1;
+                
+                // Subset.printSubsets(B1, 1, 5);
+                // o5.close();
+                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+                // test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
+                int fd2= open(name2, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int stdout_fd2 = dup(STDOUT_FILENO);
+                dup2(fd2, 1);   // make stdout go to file
+                //dup2(fd, 2);
+                A1[1] = 1;
+                A1[3] = 1;
+                
+                printSubsets(A1, 5, 1, 5);
+                dup2(stdout_fd2, STDOUT_FILENO);
+                close(fd2);
+                test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
+                //if(test_status==0)
+                return test_status;
+
+
+                //return test_status;
+            }
+            // if (verbose) {
+            //     printf("\nUnfortunately your program crashed on test %s With an exception of:\n",  testName(test));
+            //     printf("\n");
+            //     // System.out.println(
+            //     //         "\nUnfortunately your program crashed on test " + testName(test) + " With an exception of:\n");
+            //     // e.printStackTrace();
+            //     // System.out.println();
+            // }
+            //return 255;
+
+       // } catch (StackOverflowError s) {
+            // if (verbose) {
+            //     System.out.println("\nUnfortunately your program crashed on test " + testName(test)
+            //             + " With a stack overflow error\n");
+            // }
+            // return 255;
+        //}
+        return 0;
+    }
 int main(int argc, char **argv) {
 
         if (argc < 2 || (argc == 2 && strcmp(argv[1], "-v") != 0)) {
