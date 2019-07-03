@@ -337,8 +337,8 @@ void end_program(uint8_t argc) {
 }
 
     int runTest(int test) {
-        int A[5];
-        int A1[6];
+        int A[5]={0,0,0,0,0};
+        int A1[6]={0,0,0,0,0,0};
         //printSet(int B[], int n)
             if (test == setToString1_test) {
 
