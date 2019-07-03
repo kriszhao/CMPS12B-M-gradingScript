@@ -97,4 +97,4 @@ cat SubsetTest-out.txt
 
 #rm -f *out[0-9].txt
 
-rm -f *.o ModelSubsetTest* garbage*
+#rm -f *.o ModelSubsetTest* garbage*
