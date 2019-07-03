@@ -88,8 +88,8 @@ echo ""
 echo "Press Enter To Continue with SubsetTest Results"
 read verbose
 
-#javac *.java >> garbage &>> garbage
-make -f Makefile1 ModelSubsetTest >> garbage &>> garbage
+#javac *.java >> garbage &>> garbage >> garbage &>> garbage
+make -f Makefile1 ModelSubsetTest 
 #cat garbage
 
 timeout 5 java ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
