@@ -396,7 +396,7 @@ void end_program(uint8_t argc) {
                 // fflush(stdout);
                 // dup2(stdout_fd, STDOUT_FILENO);
                 // close(stdout_fd);
-                int fd = open(name, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
                 int stdout_fd = dup(STDOUT_FILENO);
                 dup2(fd, 1);   // make stdout go to file
                 //dup2(fd, 2);
@@ -405,6 +405,8 @@ void end_program(uint8_t argc) {
                 printSubsets(A, 4, 1, 2);
                 dup2(stdout_fd, STDOUT_FILENO);
                 close(fd);
+                close(1);
+                close(stdout_fd);
                 test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
                 //if(test_status==0)
                 return test_status;
@@ -423,7 +425,7 @@ void end_program(uint8_t argc) {
                 // o4.close();
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
                 // test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
-                int fd1= open(name1, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int fd1= open(name1, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
                 int stdout_fd1 = dup(STDOUT_FILENO);
                 dup2(fd1, 1);   // make stdout go to file
                 //dup2(fd, 2);
@@ -433,6 +435,8 @@ void end_program(uint8_t argc) {
                 printSubsets(A1, 5, 1, 6);
                 dup2(stdout_fd1, STDOUT_FILENO);
                 close(fd1);
+                close(1);
+                close(stdout_fd1);
                 test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 //if(test_status==0)
                 return test_status;
@@ -451,7 +455,7 @@ void end_program(uint8_t argc) {
                 // o5.close();
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
                 // test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
-                int fd2= open(name2, O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
+                int fd2= open(name2, O_RDWR | O_CREAT,0666);//S_IRUSR | S_IWUSR
                 int stdout_fd2 = dup(STDOUT_FILENO);
                 dup2(fd2, 1);   // make stdout go to file
                 //dup2(fd, 2);
@@ -461,6 +465,7 @@ void end_program(uint8_t argc) {
                 printSubsets(A1, 5, 1, 5);
                 dup2(stdout_fd2, STDOUT_FILENO);
                 close(fd2);
+                close(1);
                 close(stdout_fd2);
                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
                 //if(test_status==0)
