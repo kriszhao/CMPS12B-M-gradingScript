@@ -400,6 +400,7 @@ void end_program(uint8_t argc) {
                 int stdout_fd = dup(STDOUT_FILENO);
                 dup2(fd, 1);   // make stdout go to file
                 //dup2(fd, 2);
+                A[5]={0,0,0,0,0};
                 A[1] = 1;
                 printSubsets(A, 4, 1, 2);
                 dup2(stdout_fd, STDOUT_FILENO);
@@ -453,12 +454,13 @@ void end_program(uint8_t argc) {
                 int stdout_fd2 = dup(STDOUT_FILENO);
                 dup2(fd2, 1);   // make stdout go to file
                 //dup2(fd, 2);
+                A1[6]={0,0,0,0,0,0};
                 A1[1] = 1;
-                A1[3] = 1;
-                
+                A1[3] = 1;               
                 printSubsets(A1, 5, 1, 5);
                 dup2(stdout_fd2, STDOUT_FILENO);
                 close(fd2);
+                close(stdout_fd2);
                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
                 //if(test_status==0)
                 return test_status;
