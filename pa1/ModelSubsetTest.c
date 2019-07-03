@@ -397,16 +397,17 @@ void end_program(uint8_t argc) {
                 // dup2(stdout_fd, STDOUT_FILENO);
                 // close(stdout_fd);
                 int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-                int stdout_fd = dup(STDOUT_FILENO);
+                int stdout_fd = dup(1);//STDOUT_FILENO)
                 dup2(fd, 1);   // make stdout go to file
                 //dup2(fd, 2);
                 int A[5]={0,0,0,0,0};
                 A[1] = 1;
                 printSubsets(A, 4, 1, 2);
                 fflush(stdout);
-                dup2(stdout_fd, STDOUT_FILENO);
+                dup2(stdout_fd, 1);
                 close(fd);
                 close(stdout_fd);
+                clearerr(stdout);
                 test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
                 //if(test_status==0)
                 return test_status;
@@ -467,6 +468,7 @@ void end_program(uint8_t argc) {
                 dup2(stdout_fd2, STDOUT_FILENO);
                 close(fd2);
                 close(stdout_fd2);
+                clearerr(stdout);
                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
                 //if(test_status==0)
                 return test_status;
