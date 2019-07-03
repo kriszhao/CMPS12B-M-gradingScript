@@ -449,32 +449,23 @@ void end_program(uint8_t argc) {
             } else if (test == printSubsets3_test) {
                 int test_status = -1;
                 char *name2 = "unit-out5.txt";
-                // PrintStream o5 = new PrintStream(new File("unit-out5.txt"));
-                // System.setOut(o5);
-
-                // B1[1] = 1;
-                // B1[3] = 1;
+   
+                //int fd2= open(name2, O_RDWR | O_CREAT,0666);//S_IRUSR | S_IWUSR
+                //int stdout_fd2 = dup(1);
+                //dup2(fd2, 1);   // make stdout go to file
                 
-                // Subset.printSubsets(B1, 1, 5);
-                // o5.close();
-                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-                // test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
-                int fd2= open(name2, O_RDWR | O_CREAT,0666);//S_IRUSR | S_IWUSR
-                int stdout_fd2 = dup(1);
-                dup2(fd2, 1);   // make stdout go to file
-                //dup2(fd, 2);
                 int A1[6]={0,0,0,0,0,0};
                 A1[1] = 1;
                 A1[3] = 1;               
                 printSubsets(A1, 5, 1, 5);
-                fflush(stdout);
-                dup2(stdout_fd2, 1);
-                close(fd2);
-                close(stdout_fd2);
-                clearerr(stdout);
-                test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
-                //if(test_status==0)
-                remove(name2);
+//                 fflush(stdout);
+//                 dup2(stdout_fd2, 1);
+//                 close(fd2);
+//                 close(stdout_fd2);
+//                 clearerr(stdout);
+//                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
+//                 //if(test_status==0)
+//                 remove(name2);
                 return test_status;
 
 
