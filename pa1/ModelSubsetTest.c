@@ -409,7 +409,7 @@ void end_program(uint8_t argc) {
                 close(stdout_fd);
                 clearerr(stdout);
                 test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
-                remove(name);
+                //remove(name);
                 //if(test_status==0)
                 return test_status;
 
@@ -441,7 +441,7 @@ void end_program(uint8_t argc) {
                 close(stdout_fd1);
                 clearerr(stdout);
                 test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
-                 remove(name1);
+                // remove(name1);
                 //if(test_status==0)
                 return test_status;
 
@@ -450,22 +450,22 @@ void end_program(uint8_t argc) {
                 int test_status = -1;
                 char *name2 = "unit-out5.txt";
    
-                //int fd2= open(name2, O_RDWR | O_CREAT,0666);//S_IRUSR | S_IWUSR
-                //int stdout_fd2 = dup(1);
-                //dup2(fd2, 1);   // make stdout go to file
+                int fd2= open(name2, O_RDWR | O_CREAT,0666);//S_IRUSR | S_IWUSR
+                int stdout_fd2 = dup(1);
+                dup2(fd2, 1);   // make stdout go to file
                 
                 int A1[6]={0,0,0,0,0,0};
                 A1[1] = 1;
                 A1[3] = 1;               
                 printSubsets(A1, 5, 1, 5);
-//                 fflush(stdout);
-//                 dup2(stdout_fd2, 1);
-//                 close(fd2);
-//                 close(stdout_fd2);
-//                 clearerr(stdout);
-//                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
-//                 //if(test_status==0)
-//                 remove(name2);
+                fflush(stdout);
+                dup2(stdout_fd2, 1);
+                close(fd2);
+                close(stdout_fd2);
+                clearerr(stdout);
+                test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
+                //if(test_status==0)
+                //remove(name2);
                 return test_status;
 
 
