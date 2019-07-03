@@ -22,12 +22,7 @@ static volatile sig_atomic_t testStatus;
 static uint8_t disable_exit_handler;
 jmp_buf test_crash;
 int test_count;
-//boolean verbose;
-// int setToString1_test;
-// int setToString2_test;
-// int printSubsets1_test;
-// int printSubsets2_test;
-// int printSubsets3_test;
+
 #define FIRST_TEST setToString1_test
 #define MAXSCORE 30
 #define PNTSPERTEST 6
@@ -53,54 +48,10 @@ char* strtrim(char *str) {
         ptr[j++]=str[i];
     } 
     ptr[j]='\0';
-   // str=ptr;
-     //printf("555:%s\n",ptr);
+   
      return ptr;
-  // int index = strlen(str) - 1;
-  // int i = 0;
-  // //int j = 0;
-  // char *str1;
-  // while (i<index) {
-  //   if(str[i]!='\0'&&str[i]!='\n'&&!isspace(str[i]))
-  //       {
-  //           *str1 = str[i];
-  //           str1++;
-  //       }
-
-  //   i++;
-  // }
-  //            printf("44444 %s\n",str);
-
-  // if (index < 0) index = 0;
-  //  if (str[index] != '\0' && !isspace(str[index])) {
-  //   *str1 = str[index];
-  //   str1++;
-  //  }
-  //             printf("5555\n");
-
-  //  *str1 = '\0';
-  //  strcpy(str,str1);
-  //  printf("66666 %s\n",str);
+ 
 }
-// bool strcmpIgSpace(char *a,char *b) {
-//     // int len1 = strlen(str1);
-//     // int len2 = strlen(str2);
-//     // int i=0; int j=0;
-
-//     // while(i<len1&&j<len2&&str1[i]!='\n'&&str2[j]!='\n'){
-//     //     if(str1[i]!=str2[j]){
-//     //         return 0;
-//     //     }
-//     //     i++;
-//     //     j++;
-//     //     if(i<len1&&isspace(str1[i]))
-//     //         i++;
-//     //     if(j<len2&&isspace(str2[j]))
-//     //         j++;
-
-//     // }
-
-//    }
 char *testName(int test) {
 
         if (test == setToString1_test)
@@ -117,7 +68,7 @@ char *testName(int test) {
         return "";
     }
 
-     bool strcmpn(int ss[], char* s,int n) {
+bool strcmpn(int ss[], char* s,int n) {
         //char* temp = NULL;
         //itoa()
        
@@ -151,85 +102,11 @@ char *testName(int test) {
          //printf("correct: %s",s);
         return 0;
 
-        //     freopen("/dev/null", "a", stdout);
-        // setbuf(stdout, buffer);
-        // printSet(a,  n);
-        // freopen ("/dev/tty", "a", stdout);
-        // printf("sdsf: %s\n",buffer);
-        // if(strcmp(buffer,b) == 0)
-        //     return 1;
-        // return 0;
     }
 
 
-// String compareFiles(Scanner file1, Scanner file2) {
-//         String lineA;
-//         String lineB;
-//         int x = 1;
-//         String comparison = "";
-//         while (file1.hasNextLine() || file2.hasNextLine()) {
-//             lineA = "";
-//             lineB = "";
-//             if (file1.hasNextLine())
-//                 lineA = file1.nextLine();
-//             if (file2.hasNextLine())
-//                 lineB = file2.nextLine();
-//             lineA = lineA.trim();
-//             lineB = lineB.trim();
-//             if (!lineA.equals(lineB)) {
-//                 comparison += "Line " + x;
-//                 x++;
-//                 comparison += "< " + lineA;
-//                 comparison += "> " + lineB + "\n";
-//             }
-//         }
-//         return comparison;
-//     }
 int compareFiles(FILE *fp1, FILE *fp2) 
 { 
-    // fetching character of two file 
-    // in two variable ch1 and ch2 
-    // char ch1 = getc(fp1); 
-    // char ch2 = getc(fp2); 
-  
-    // // // error keeps track of number of errors 
-    // // // pos keeps track of position of errors 
-    // // // line keeps track of error line 
-    // // int error = 0, pos = 0, line = 1; 
-  
-    // // // iterate loop till end of file 
-    // while (ch1 != EOF && ch2 != EOF) 
-    // { 
-    //     pos++; 
-    //     if(ch1==' ')
-    //         ch1 = getc(fp1);
-    //     if(ch2==' ')
-    //         ch2 = getc(fp2);
-    //     // if both variable encounters new 
-    //     // line then line variable is incremented 
-    //     // and pos variable is set to 0 
-    //     if (ch1 == '\n' && ch2 == '\n') 
-    //     { 
-    //         line++; 
-    //         pos = 0; 
-    //     } 
-  
-    //     // if fetched data is not equal then 
-    //     // error is incremented 
-    //     if (ch1 != ch2) 
-    //     { 
-    //         error++; 
-    //         printf("Line Number : %d \tError"
-    //            " Position : %d \n", line, pos); 
-    //     } 
-  
-    //     // fetching character until end of file 
-    //     ch1 = getc(fp1); 
-    //     ch2 = getc(fp2); 
-    // } 
-  
-    // printf("Total Errors : %d\t", error); 
-
     char * line1 = NULL;
     size_t len1 = 0;
     char * line2 = NULL;
@@ -274,19 +151,6 @@ int compareFiles(FILE *fp1, FILE *fp2)
     return 0;
 } 
 int CheckResult(char* file1, char* file2) {
-        // try {
-        //     File f1 = new File(file1);
-        //     File f2 = new File(file2);
-        //     String comparison = compareFiles(new Scanner(f1), new Scanner(f2));
-        //     if (strcmp(comparison, "")!=0) {
-        //         //System.out.println(comparison);
-        //         return 1;
-        //     } else {
-        //         return 0;
-        //     }
-        // } catch (FileNotFoundException e) {
-        //     return 255;
-        // }
     FILE *fp1 = fopen(file1, "r"); 
     FILE *fp2 = fopen(file2, "r"); 
   
@@ -417,16 +281,6 @@ void end_program(uint8_t argc) {
                 int test_status = -1;
                 
                 char *name1 = "unit-out4.txt";
-                // PrintStream o4 = new PrintStream(new File("unit-out4.txt"));
-                // System.setOut(o4);
-
-                // B1[1] = 1;
-                // B1[3] = 1;
-
-                // Subset.printSubsets(B1, 1, 6);
-                // o4.close();
-                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-                // test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 int fd1= open(name1, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
                 int stdout_fd1 = dup(STDOUT_FILENO);
                 dup2(fd1, 1);   // make stdout go to file
@@ -471,23 +325,7 @@ void end_program(uint8_t argc) {
 
                 //return test_status;
             }
-            // if (verbose) {
-            //     printf("\nUnfortunately your program crashed on test %s With an exception of:\n",  testName(test));
-            //     printf("\n");
-            //     // System.out.println(
-            //     //         "\nUnfortunately your program crashed on test " + testName(test) + " With an exception of:\n");
-            //     // e.printStackTrace();
-            //     // System.out.println();
-            // }
-            //return 255;
-
-       // } catch (StackOverflowError s) {
-            // if (verbose) {
-            //     System.out.println("\nUnfortunately your program crashed on test " + testName(test)
-            //             + " With a stack overflow error\n");
-            // }
-            // return 255;
-        //}
+           
         return 0;
     }
 int main(int argc, char **argv) {
@@ -501,12 +339,6 @@ int main(int argc, char **argv) {
 
         test_count = 0;
 
-        // form is TESTCASE_FUNCTION
-        // setToString1_test = test_count++;
-        // setToString2_test = test_count++;
-        // printSubsets1_test = test_count++;
-        // printSubsets2_test = test_count++;
-        // printSubsets3_test = test_count++;
 
         disable_exit_handler = 0;
         testsPassed = 0;
@@ -544,25 +376,6 @@ int main(int argc, char **argv) {
 
   end_program(argc);
   return 0;
-        //     if (test_status == 0) {
-        //         if (verbose)
-        //             printf("\n");
-        //         tests_passed++;
-        //     } else if (test_status == 255) {
-        //         if (verbose)
-        //            printf(": due to exception\n");
-        //         break;
-        //     } else {
-        //         if (verbose)
-        //             printf(": in test %d\n", test_status);
-        //     }
-        // }
-
-        // if (verbose && test_status != 255) {
-        //   printf("\n\nPassed %d tests out of %d possible\n", tests_passed, test_count);
-        // } else if (verbose) {
-        //   printf("\n\nReceiving Charity points due to an exception\n");
-        // }
-
+       
         
 }
