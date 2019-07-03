@@ -403,9 +403,9 @@ void end_program(uint8_t argc) {
                 int A[5]={0,0,0,0,0};
                 A[1] = 1;
                 printSubsets(A, 4, 1, 2);
+                fflush(stdout);
                 dup2(stdout_fd, STDOUT_FILENO);
                 close(fd);
-                close(1);
                 close(stdout_fd);
                 test_status = CheckResult("modelunit-out1.txt", "unit-out1.txt");
                 //if(test_status==0)
@@ -433,9 +433,9 @@ void end_program(uint8_t argc) {
                 A1[1] = 1;
                 A1[3] = 1;
                 printSubsets(A1, 5, 1, 6);
+                fflush(stdout);
                 dup2(stdout_fd1, STDOUT_FILENO);
                 close(fd1);
-                close(1);
                 close(stdout_fd1);
                 test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 //if(test_status==0)
@@ -463,9 +463,9 @@ void end_program(uint8_t argc) {
                 A1[1] = 1;
                 A1[3] = 1;               
                 printSubsets(A1, 5, 1, 5);
+                fflush(stdout);
                 dup2(stdout_fd2, STDOUT_FILENO);
                 close(fd2);
-                close(1);
                 close(stdout_fd2);
                 test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
                 //if(test_status==0)
