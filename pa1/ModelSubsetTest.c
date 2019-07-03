@@ -455,7 +455,7 @@ void end_program(uint8_t argc) {
                 int stdout_fd2 = dup(STDOUT_FILENO);
                 dup2(fd2, 1);   // make stdout go to file
                 //dup2(fd, 2);
-                A1[6]={0,0,0,0,0,0};
+                int A1[6]={0,0,0,0,0,0};
                 A1[1] = 1;
                 A1[3] = 1;               
                 printSubsets(A1, 5, 1, 5);
