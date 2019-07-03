@@ -21,3 +21,9 @@ cp script/pa1.sh  (student's file path)/pa1.sh
 chmod +x pa1.sh
 pa1.sh
 ```
+
+If you only want to test your unit test by ModelSubsetTest.c, run:
+```
+make -f Makefile1 ModelSubsetTest
+ModelSubsetTest -v
+```
