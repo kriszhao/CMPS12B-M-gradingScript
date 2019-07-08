@@ -95,6 +95,6 @@ make -f Makefile1 ModelSubsetTest
 timeout 5 ./ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
 cat SubsetTest-out.txt
 
-#rm -f *out[0-9].txt
+rm -f *out[0-9].txt
 
-#rm -f *.o ModelSubsetTest* garbage*
+rm -f *.o ModelSubsetTest* garbage*
