@@ -18,7 +18,7 @@ do
 done
 
 curl $SRCDIR/ModelQueensTest.c > ModelQueensTest.c
-
+curl $SRCDIR/Makefile1 > Makefile1
 curl $SRCDIR/modelunit-out1.txt > modelunit-out1.txt
 curl $SRCDIR/modelunit-out2-1.txt > modelunit-out2-1.txt
 curl $SRCDIR/modelunit-out2-2.txt > modelunit-out2-2.txt
