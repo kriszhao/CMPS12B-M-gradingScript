@@ -153,8 +153,6 @@ int compareFiles(FILE *fp1, FILE *fp2)
        // printf("333 %s:%s\n", buffer_trim,s_trim );
         if(strcmp(trim1,trim2) != 0)
             return 1;
-         //printf("your result: %s",buffer);
-         //printf("correct: %s",s);
       
         
     }
@@ -240,9 +238,7 @@ int runTest(int test) {
         int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
         int stdout_fd = dup(1);//STDOUT_FILENO)
         dup2(fd, 1);
-
         printBoard(B1,4);
-
         fflush(stdout);
         dup2(stdout_fd, 1);
         close(fd);
@@ -390,8 +386,8 @@ int main(int argc, char* argv[]) {
             printf("Usage: %s [-v]", (argc > 0 ? argv[0] : "./ModelQueensTest"));
             exit(1);
         }
-        printf("\n"); // more spacing
-        if (argc == 2) printf("\n"); 
+        // printf("\n"); // more spacing
+        // if (argc == 2) printf("\n"); 
         test_count = 0;  
         //int test_status = 0;
         disable_exit_handler = 0;
@@ -406,6 +402,10 @@ int main(int argc, char* argv[]) {
             testStatus = runTest(i);
             fail_jmp:
             if (argc == 2) { // it's verbose mode
+                // char *name = "QueensTest-out.txt";
+                // int fd = open(name, O_CREAT |O_APPEND, 0666);
+                // int stdout_fd = dup(1);//STDOUT_FILENO)
+                // dup2(fd, 1);
                  printf("Test %s %s", testName(i),testStatus == 0 ? "PASSED" : "FAILED");
                 if (testStatus == 255) {
                     printf(": due to a %s\n", fail_type == 1 ? "segfault" : fail_type == 2 ?"program exit" : "program interruption");
