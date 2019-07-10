@@ -19,7 +19,7 @@ Run the following in your working directory (the directory you wrote your code
 in) to download the test script.
 
 ```bash
-curl https://raw.githubusercontent.com/bxji/cmps012b-pt.s19.grading/master/pa2/pa2.sh > pa2.sh
+curl https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa2/pa2.sh > pa2.sh
 chmod +x pa2.sh
 ```
 ^^^ To be fixed later~
