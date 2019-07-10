@@ -199,7 +199,7 @@ echo ""
 echo "Press Enter To Continue with QueensTest Results"
 read verbose
 
-make -f Makefile1 ModelSubsetTest 
+make -f Makefile1 ModelQueensTest 
 #cat garbage
 
 timeout 5 ./ModelQueensTest -v > QueensTest-out.txt &>> QueensTest-out.txt
