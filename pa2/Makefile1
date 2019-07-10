@@ -1,0 +1,12 @@
+Queens: clean
+	gcc -c -std=c99 -Wall -pedantic Queens.c
+	gcc -o Queens *.o
+
+ModelQueensTest: clean
+	gcc -c -std=c99 -Wall -pedantic ModelQueensTest.c
+	gcc -o ModelQueensTest *.o
+
+clean:
+	rm -f *.o Queens ModelQueensTest
+
+.PHONY: Queens ModelQueensTest clean
