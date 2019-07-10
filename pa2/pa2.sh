@@ -10,4 +10,4 @@ SCRIPT=$(mktemp)
 curl $SRCDIR/$EXE > $EXE
 chmod +x $EXE
 ./$EXE
-rm -f $EXE
+#rm -f $EXE

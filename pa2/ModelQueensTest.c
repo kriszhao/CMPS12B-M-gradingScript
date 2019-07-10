@@ -236,15 +236,6 @@ int runTest(int test) {
         int *B1[5];
         for(int i=0;i<5;i++)              
                 B1[i] = (int *)A1[i]; 
-    
-                // set the output to unit file
-                // PrintStream o1 = new PrintStream(new File("unit-out1.txt")); 
-                // System.setOut(o1);
-                // // function being tested
-                // Queens.printBoard(B1);
-                // o1.close();
-                // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
-
         char *name = "unit-out1.txt";
         int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
         int stdout_fd = dup(1);//STDOUT_FILENO)
@@ -268,7 +259,7 @@ int runTest(int test) {
                 //two possible result since students may update all the board, in the instruction Pat only update cells below the current rows
         int test_status = -1;
         int  A2[5][5]= {{0,0,0,0,0},{2,0,1,0,0},{4,-1,-1,-1,1},{0,0,-1,-1,-2},{0,0,-2,0,-1}};
-        int *B2[5] ;
+        int *B2[5];
           for(int i=0;i<5;i++)              
                 B2[i] = (int *)A2[i];          
                 // PrintStream o2 = new PrintStream(new File("unit-out2.txt")); 
@@ -303,7 +294,7 @@ int runTest(int test) {
                 //test3 remove queen
         int test_status = -1;
         int  A3[5][5]= {{0,0,0,0,0},{2,0,1,0,0},{4,-1,-1,-1,1},{1,1,-1,-1,-2},{3,-1,-3,1,-1}};
-        int *B3[5] ;
+        int *B3[5];
           for(int i=0;i<5;i++)              
                 B3[i] = (int *)A3[i];       
                 // PrintStream o3 = new PrintStream(new File("unit-out3.txt")); 
