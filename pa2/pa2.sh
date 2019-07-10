@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# cmps012b-pt.s19 grading
+# cmps012b-pt.u19 grading
 # usage: pa2.sh
 # (run within your pa2 directory to test your code)
 
