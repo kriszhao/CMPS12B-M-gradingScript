@@ -19,7 +19,7 @@ Run the following in your working directory (the directory you wrote your code
 in) to download the test script.
 
 ```bash
-curl https://raw.githubusercontent.com/bxji/cmps012b-pt.s19.grading/master/pa2/pa2.sh > pa2.sh
+curl https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa2/pa2.sh > pa2.sh
 chmod +x pa2.sh
 ```
 ^^^ To be fixed later~
@@ -43,4 +43,6 @@ between any of the pairs of equal signs or if any unit tests fail.
 ## Removal
 
 You can delete the test and all other downloaded/generated files with:
-`rm -f pa5.sh diff*.txt out*.txt model-out*.txt QueensUnitTests.java`.
+`rm -f pa2.sh diff*.txt out*.txt model-out*.txt QueensUnitTests.c`.
+
+Before you run the pa2.sh, make sure you delete every extra files except for those files to be submitted.
