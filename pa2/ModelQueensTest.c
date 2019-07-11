@@ -242,7 +242,7 @@ int runTest(int test) {
         fflush(stdout);
         dup2(stdout_fd, 1);
         close(fd);
-        close(stdout_fd);
+        //close(stdout_fd);
         clearerr(stdout);
 
 
@@ -276,7 +276,7 @@ int runTest(int test) {
         fflush(stdout);
         dup2(stdout_fd1, 1);
         close(fd1);
-        close(stdout_fd1);
+        //close(stdout_fd1);
         clearerr(stdout);
 
         test_status = CheckResult("modelunit-out2-1.txt", "unit-out2.txt");
@@ -311,7 +311,7 @@ int runTest(int test) {
         fflush(stdout);
         dup2(stdout_fd2, 1);
         close(fd2);
-        close(stdout_fd2);
+        //close(stdout_fd2);
         clearerr(stdout);
 
         test_status = CheckResult("modelunit-out3.txt", "unit-out3.txt");
@@ -341,7 +341,7 @@ int runTest(int test) {
         fflush(stdout);
         dup2(stdout_fd3, 1);
         close(fd3);
-        close(stdout_fd3);
+        //close(stdout_fd3);
         clearerr(stdout);
 
 
@@ -371,7 +371,7 @@ int runTest(int test) {
         fflush(stdout);
         dup2(stdout_fd4, 1);
         close(fd4);
-        close(stdout_fd4);
+        //close(stdout_fd4);
         clearerr(stdout);
 
         test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
