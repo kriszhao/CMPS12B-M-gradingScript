@@ -235,15 +235,18 @@ int runTest(int test) {
         for(int i=0;i<5;i++)              
                 B1[i] = (int *)A1[i]; 
         char *name = "unit-out1.txt";
-        int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-        int stdout_fd = dup(1);//STDOUT_FILENO)
-        dup2(fd, 1);
+        // int fd = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
+        // int stdout_fd = dup(1);//STDOUT_FILENO)
+        // dup2(fd, 1);
+        // printBoard(B1,4);
+        // fflush(stdout);
+        // dup2(stdout_fd, 1);
+        // close(fd);
+        // //close(stdout_fd);
+        // clearerr(stdout);
+        freopen(name,"a",stdout);
         printBoard(B1,4);
-        fflush(stdout);
-        dup2(stdout_fd, 1);
-        close(fd);
-        //close(stdout_fd);
-        clearerr(stdout);
+        freopen("/dev/tty", "a", stdout);
 
 
                 //check if outputs are the same
@@ -265,19 +268,23 @@ int runTest(int test) {
                 // o2.close();
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
-        char *name = "unit-out2.txt";
-        int fd1 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-        int stdout_fd1 = dup(1);//STDOUT_FILENO)
-        dup2(fd1, 1);
+        // char *name = "unit-out2.txt";
+        // int fd1 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
+        // int stdout_fd1 = dup(1);//STDOUT_FILENO)
+        // dup2(fd1, 1);
 
+        // placeQueen(B2,4,3,1);
+        // printArrayNew(B2,4);
+
+        // fflush(stdout);
+        // dup2(stdout_fd1, 1);
+        // close(fd1);
+        // //close(stdout_fd1);
+        // clearerr(stdout);
+        freopen(name,"a",stdout);
         placeQueen(B2,4,3,1);
         printArrayNew(B2,4);
-
-        fflush(stdout);
-        dup2(stdout_fd1, 1);
-        close(fd1);
-        //close(stdout_fd1);
-        clearerr(stdout);
+        freopen("/dev/tty", "a", stdout);
 
         test_status = CheckResult("modelunit-out2-1.txt", "unit-out2.txt");
         if (test_status == 1) {
@@ -301,18 +308,24 @@ int runTest(int test) {
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
         char *name = "unit-out3.txt";
-        int fd2 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-        int stdout_fd2 = dup(1);//STDOUT_FILENO)
-        dup2(fd2, 1);
+        // int fd2 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
+        // int stdout_fd2 = dup(1);//STDOUT_FILENO)
+        // dup2(fd2, 1);
 
+        // removeQueen( B3, 4, 4 , 3);
+        // printf("%d:%d\n",B3[4][3],B3[4][0]);
+
+        // fflush(stdout);
+        // dup2(stdout_fd2, 1);
+        // close(fd2);
+        // //close(stdout_fd2);
+        // clearerr(stdout);
+
+        freopen(name,"a",stdout);
         removeQueen( B3, 4, 4 , 3);
         printf("%d:%d\n",B3[4][3],B3[4][0]);
 
-        fflush(stdout);
-        dup2(stdout_fd2, 1);
-        close(fd2);
-        //close(stdout_fd2);
-        clearerr(stdout);
+        freopen("/dev/tty", "a", stdout);
 
         test_status = CheckResult("modelunit-out3.txt", "unit-out3.txt");
         return test_status;
@@ -332,17 +345,21 @@ int runTest(int test) {
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
         char *name = "unit-out4.txt";
-        int fd3 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-        int stdout_fd3 = dup(1);//STDOUT_FILENO)
-        dup2(fd3, 1);
+        // int fd3 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
+        // int stdout_fd3 = dup(1);//STDOUT_FILENO)
+        // dup2(fd3, 1);
 
-        printf("%d\n",findSolutions( B4, 4, 4 , "")); //don't use verbose since some student will use -v some use verbose
+        // printf("%d\n",findSolutions( B4, 4, 4 , "")); //don't use verbose since some student will use -v some use verbose
 
-        fflush(stdout);
-        dup2(stdout_fd3, 1);
-        close(fd3);
-        //close(stdout_fd3);
-        clearerr(stdout);
+        // fflush(stdout);
+        // dup2(stdout_fd3, 1);
+        // close(fd3);
+        // //close(stdout_fd3);
+        // clearerr(stdout);
+        freopen(name,"a",stdout);
+        printf("%d\n",findSolutions( B4, 4, 4 , ""));
+
+        freopen("/dev/tty", "a", stdout);
 
 
         test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
@@ -362,18 +379,22 @@ int runTest(int test) {
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
         char *name = "unit-out5.txt";
-        int fd4 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
-        int stdout_fd4 = dup(1);//STDOUT_FILENO)
-        dup2(fd4, 1);
+        // int fd4 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
+        // int stdout_fd4 = dup(1);//STDOUT_FILENO)
+        // dup2(fd4, 1);
 
+        // printf("%d\n",findSolutions( B5, 4, 2 , ""));
+
+        // fflush(stdout);
+        // dup2(stdout_fd4, 1);
+        // close(fd4);
+        // //close(stdout_fd4);
+        // clearerr(stdout);
+
+        freopen(name,"a",stdout);
         printf("%d\n",findSolutions( B5, 4, 2 , ""));
 
-        fflush(stdout);
-        dup2(stdout_fd4, 1);
-        close(fd4);
-        //close(stdout_fd4);
-        clearerr(stdout);
-
+        freopen("/dev/tty", "a", stdout);
         test_status = CheckResult("modelunit-out5.txt", "unit-out5.txt");
         return test_status;
     }
