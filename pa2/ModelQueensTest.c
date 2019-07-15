@@ -268,7 +268,7 @@ int runTest(int test) {
                 // o2.close();
                 // System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
 
-        // char *name = "unit-out2.txt";
+        char *name = "unit-out2.txt";
         // int fd1 = open(name, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
         // int stdout_fd1 = dup(1);//STDOUT_FILENO)
         // dup2(fd1, 1);
