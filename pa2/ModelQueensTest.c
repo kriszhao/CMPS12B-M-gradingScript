@@ -219,7 +219,7 @@ void end_program(uint8_t argc) {
     printf("\nRecieving charity points for a premature program end\n");
   }
 
-  printf("\nYou will receive %d out of %d possible points on the Hashtable Dictionary\n\n",
+  printf("\nYou will receive %d out of %d possible points on the Queens\n\n",
       totalScore, MAXSCORE);
 
   exit(0);
