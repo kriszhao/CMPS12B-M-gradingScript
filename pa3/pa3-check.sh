@@ -16,14 +16,20 @@ echo ""
 
 make
 
-if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ] || [ ! -e DictionaryClient2 ] || [ ! -x DictionaryClient2 ]; then # exist and executable
+if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ]; then # exist and executable
   echo ""
-  echo "Makefile doesn't correctly create Executable!!!"
+  echo "Makefile doesn't create DictionaryTest Executable!!! It is fine. Please create DictionaryClient2 Executable"
   echo ""
   rm -f *.o DictionaryTest
-  rm -f *.o DictionaryClient2
 fi
 
+
+if [ ! -e DictionaryClient2 ] || [ ! -x DictionaryClient2 ]; then # exist and executable
+  echo ""
+  echo "Makefile doesn't create DictionaryClient2 Executable!!! If you create DictionaryTest Executable, you will be fine."
+  echo ""
+  rm -f *.o DictionaryClient2
+fi
 echo ""
 echo ""
 
