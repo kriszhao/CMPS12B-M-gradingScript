@@ -16,11 +16,12 @@ echo ""
 
 make
 
-if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ]; then # exist and executable
+if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ] || [ ! -e DictionaryClient2 ] || [ ! -x DictionaryClient2 ]; then # exist and executable
   echo ""
   echo "Makefile doesn't correctly create Executable!!!"
   echo ""
   rm -f *.o DictionaryTest
+  rm -f *.o DictionaryClient2
 fi
 
 echo ""
@@ -28,7 +29,7 @@ echo ""
 
 make clean
 
-if [ -e DictionaryTest ] || [ -e *.o ]; then
+if [ -e DictionaryTest ] || [ -e *.o ]|| [ -e DictionaryClient2 ]; then
   echo "WARNING: Makefile didn't successfully clean all files"
 fi
 
