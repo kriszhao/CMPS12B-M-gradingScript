@@ -87,7 +87,7 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
 
     case easy_test:
       {
-        if (!isEmpty(A)) return 1;
+        if (size(A)!=0 ) return 1;
         if (lookup(A, "aa") != NULL) return 2;
         makeEmpty(A);
         return 0;
@@ -141,7 +141,7 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
           char *curstr = (tempstr + 20 * i);
           delete(A, curstr); // should be constant time
         }
-        if (!isEmpty(A)) return 4; // constant time
+        if (size(A)!=0 ) return 4; // constant time
         return 0;
       }
     case print_test:
@@ -150,7 +150,7 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
         FILE *out = NULL;
         out = fopen("print_test.txt", "w"); // for writing
         insert(B, "aa", "aa");
-        printDictionary(out, A);
+        fprintf(out,"%s\n",DictionaryToString(A));
         fclose(out);
         for (int i = 0; i < 1000; i++); //some IO delay
         in = fopen("print_test.txt", "r"); // for reading
@@ -182,7 +182,9 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
         }
         insert(B, cmpstr, cmpstr);
 
-        printDictionary(out, B);
+        ///printDictionary(out, B);
+        fprintf(out,"%s\n",DictionaryToString(B));
+
         fclose(out);
         for (int i = 0; i < 1000; i++); //some IO delay
         in = fopen("print_test.txt", "r"); // for reading

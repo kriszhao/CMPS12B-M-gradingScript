@@ -17,12 +17,12 @@ echo ""
 
 make
 
-if [ ! -e DictionaryClient ] || [ ! -x DictionaryClient ]; then # exist and executable
+if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ]; then # exist and executable
   echo ""
   echo "Makefile doesn't correctly create Executable!!!"
   echo ""
   rm -f *.o
-  gcc -std=c99 -Wall *.c -o DictionaryClient >> garbage &>> garbage
+  gcc -std=c99 -Wall *.c -o DictionaryTest >> garbage &>> garbage
   cat garbage
 else
   echo ""
@@ -35,9 +35,9 @@ echo ""
 
 make clean
 
-if [ -e DictionaryClient ] || [ -e *.o ]; then
+if [ -e DictionaryTest ] || [ -e *.o ]; then
   echo "WARNING: Makefile didn't successfully clean all files"
-  rm -f DictionaryClient *.class
+  rm -f DictionaryTest *.class
 fi
 
 echo ""
