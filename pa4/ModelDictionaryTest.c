@@ -150,7 +150,9 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
         FILE *out = NULL;
         out = fopen("print_test.txt", "w"); // for writing
         insert(B, "aa", "aa");
-        fprintf(out,"%s\n",DictionaryToString(A));
+        char* StrD = DictionaryToString(A);
+        fprintf(out,"%s\n",StrD);
+        free(StrD);
         fclose(out);
         for (int i = 0; i < 1000; i++); //some IO delay
         in = fopen("print_test.txt", "r"); // for reading
@@ -183,8 +185,9 @@ uint8_t runTest(Dictionary *pA, Dictionary *pB, int test) {
         insert(B, cmpstr, cmpstr);
 
         ///printDictionary(out, B);
-        fprintf(out,"%s\n",DictionaryToString(B));
-
+        char* StrD1 = DictionaryToString(B);
+        fprintf(out,"%s\n",StrD1);
+        free(StrD1);
         fclose(out);
         for (int i = 0; i < 1000; i++); //some IO delay
         in = fopen("print_test.txt", "r"); // for reading
