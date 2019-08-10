@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa3
+EXAMP=https://classes.soe.ucsc.edu/cmps012b/Summer19/Examples/Programs/pa3
 
 if [ ! -e backup ]; then
   echo "WARNING: a backup has been created for you in the \"backup\" folder"
@@ -10,6 +11,7 @@ fi
 cp *.c Makefile backup   # copy all files of importance into backup
 
 curl $SRCDIR/ModelDictionaryTest.c > ModelDictionaryTest.c
+curl $EXAMP/DictionaryClient2.c > DictionaryClient2.c 
 
 echo ""
 echo ""
@@ -55,7 +57,7 @@ cat garbage
 echo ""
 echo ""
 
-timeout 45 ModelDictionaryTest -v > DictionaryTest-out.txt &>> DictionaryTest-out.txt
+timeout 45 valgrind --leak-check=full ModelDictionaryTest -v > DictionaryTest-out.txt &>> DictionaryTest-out.txt
 cat DictionaryTest-out.txt
 
 echo ""
