@@ -17,6 +17,7 @@ echo ""
 echo ""
 
 make
+make memcheck
 
 if [ ! -e DictionaryTest ] || [ ! -x DictionaryTest ]; then # exist and executable
   echo ""
@@ -57,7 +58,7 @@ cat garbage
 echo ""
 echo ""
 
-timeout 45 valgrind --leak-check=full ModelDictionaryTest -v > DictionaryTest-out.txt &>> DictionaryTest-out.txt
+timeout 45 ModelDictionaryTest -v > DictionaryTest-out.txt &>> DictionaryTest-out.txt
 cat DictionaryTest-out.txt
 
 echo ""
