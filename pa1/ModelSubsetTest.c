@@ -1,5 +1,5 @@
 //./ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
-#define _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700
+#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
