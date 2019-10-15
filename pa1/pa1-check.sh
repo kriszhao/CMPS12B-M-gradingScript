@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa1/
+SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa1/
 
 NUMTESTS=8
 PNTSPERTEST=5
