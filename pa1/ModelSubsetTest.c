@@ -1,4 +1,5 @@
 //./ModelSubsetTest -v > SubsetTest-out.txt &>> SubsetTest-out.txt
+#define _POSIX_C_SOURCE >= 200809L || _XOPEN_SOURCE >= 700
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -200,7 +201,7 @@ void end_program(uint8_t argc) {
   exit(0);
 }
 
-    int runTest(int test) {
+int runTest(int test) {
         //int A[5]={0,0,0,0,0};
         //int A1[6]={0,0,0,0,0,0};
         //printSet(int B[], int n)
@@ -327,7 +328,8 @@ void end_program(uint8_t argc) {
             }
            
         return 0;
-    }
+}
+
 int main(int argc, char **argv) {
 
         if (argc < 2 || (argc == 2 && strcmp(argv[1], "-v") != 0)) {
