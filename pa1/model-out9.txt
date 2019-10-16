@@ -1,0 +1,1 @@
+Usage: Subset n k (n and k are ints satisfying 0<=k<=n<=100)

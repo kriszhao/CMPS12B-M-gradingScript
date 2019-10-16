@@ -2,7 +2,7 @@
 
 SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa1/
 
-NUMTESTS=8
+NUMTESTS=9
 PNTSPERTEST=5
 let MAXPTS=$NUMTESTS*$PNTSPERTEST
 
