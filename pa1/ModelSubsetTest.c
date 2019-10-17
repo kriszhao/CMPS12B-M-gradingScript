@@ -279,34 +279,35 @@ int runTest(int test) {
                 //if(test_status==0)
                 return test_status;
 
-            } else if (test == printSubsets3_test) {
+            } else if (test == printSubsets2_test) {
                 int test_status = -1;
-                
+                clock_t t;
+                t = clock();                
                 char *name1 = "unit-out4.txt";
                 int fd1= open(name1, O_RDWR | O_CREAT, 0666);//S_IRUSR | S_IWUSR
                 int stdout_fd1 = dup(STDOUT_FILENO);
                 dup2(fd1, 1);   // make stdout go to file
                 //dup2(fd, 2);
                 int A1[101]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-                clock_t t;
-                t = clock();
-                printSubsets(A1, 5, 4, 3);
-                t = clock() - t;
-                double time_taken = ((double) t)/CLOCKS_PER_SEC;
+
+                printSubsets(A1, 30, 29, 3);
+
                 fflush(stdout);
                 dup2(stdout_fd1, STDOUT_FILENO);
                 close(fd1);
                 close(stdout_fd1);
                 clearerr(stdout);
-                printf("printSubsets() took %f Seconds to execute \n", time_taken);
-                test_status = (time_taken < 1) ? 0 : -1;
+                t = clock() - t;
+                double time_taken = ((double) t)/CLOCKS_PER_SEC;
+                //printf("printSubsets() took %f Seconds to execute \n", time_taken);
+                test_status = time_taken;
                 //test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 // remove(name1);
                 //if(test_status==0)
                 return test_status;
 
 
-            } else if (test == printSubsets2_test) {
+            } else if (test == printSubsets3_test) {
                 int test_status = -1;
                 char *name2 = "unit-out5.txt";
    
