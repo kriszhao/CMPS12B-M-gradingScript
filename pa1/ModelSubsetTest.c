@@ -372,7 +372,7 @@ int main(int argc, char **argv) {
             } else if (testStatus == 254) {
                 printf(": undefined test\n");
             } else if (testStatus != 0) {
-                printf(": test %d\n", testStatus);
+                printf(": test took %d Seconds to execute\n", testStatus);
             } else {
                  printf("\n");
             }
