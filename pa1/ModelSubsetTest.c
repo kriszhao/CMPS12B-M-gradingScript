@@ -299,9 +299,7 @@ int runTest(int test) {
                 close(stdout_fd1);
                 clearerr(stdout);
                 printf("printSubsets() took %f Seconds to execute \n", time_taken);
-                if (time_taken < 1) {
-                    test_status = 0;
-                }
+                test_status = (time_taken < 1) ? 0 : -1;
                 //test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 // remove(name1);
                 //if(test_status==0)
