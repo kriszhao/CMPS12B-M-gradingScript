@@ -305,7 +305,7 @@ int runTest(int test) {
                 //test_status = CheckResult("modelunit-out4.txt", "unit-out4.txt");
                 // remove(name1);
                 //if(test_status==0)
-                return test_status;
+                return 0;
 
 
             } else if (test == printSubsets3_test) {
