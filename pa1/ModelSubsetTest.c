@@ -13,6 +13,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <time.h>
 #define bool _Bool
 #define main main_ignore
 #include "Subset.c"
@@ -286,10 +287,13 @@ int runTest(int test) {
                 int stdout_fd1 = dup(STDOUT_FILENO);
                 dup2(fd1, 1);   // make stdout go to file
                 //dup2(fd, 2);
-                int A1[6]={0,0,0,0,0,0};
-                A1[1] = 1;
-                A1[3] = 1;
-                printSubsets(A1, 5, 1, 6);
+                int A1[101]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+                clock_t t;
+                t = clock();
+                printSubsets(A1, 100, 99, 3);
+                t = clock() - t;
+                double time_taken = ((double) t)/CLOCKS_PER_SEC;
+                printf("printSubsets() took %f Seconds to execute \n", time_taken);
                 fflush(stdout);
                 dup2(stdout_fd1, STDOUT_FILENO);
                 close(fd1);
