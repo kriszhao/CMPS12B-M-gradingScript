@@ -279,7 +279,7 @@ int runTest(int test) {
                 //if(test_status==0)
                 return test_status;
 
-            } else if (test == printSubsets2_test) {
+            } else if (test == printSubsets3_test) {
                 int test_status = -1;
                 
                 char *name1 = "unit-out4.txt";
@@ -290,7 +290,7 @@ int runTest(int test) {
                 int A1[101]={0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
                 clock_t t;
                 t = clock();
-                printSubsets(A1, 100, 99, 3);
+                printSubsets(A1, 50, 49, 3);
                 t = clock() - t;
                 double time_taken = ((double) t)/CLOCKS_PER_SEC;
                 fflush(stdout);
@@ -306,7 +306,7 @@ int runTest(int test) {
                 return test_status;
 
 
-            } else if (test == printSubsets3_test) {
+            } else if (test == printSubsets2_test) {
                 int test_status = -1;
                 char *name2 = "unit-out5.txt";
    
