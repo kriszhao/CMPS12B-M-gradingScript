@@ -1,7 +1,7 @@
 # How to use
 
 ```
-curl https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa1/pa1.sh > pa1.sh
+curl https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa1/pa1.sh > pa1.sh
 chmod +x pa1.sh
 ```
 

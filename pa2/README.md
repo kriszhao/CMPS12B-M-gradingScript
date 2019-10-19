@@ -21,19 +21,19 @@ Run the following in your working directory (the directory you wrote your code
 in) to download the test script.
 
 ```bash
-curl https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa2/pa2.sh > pa2.sh
+curl https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa2/pa2.sh > pa2.sh
 chmod +x pa2.sh
 ```
-^^^ To be fixed later~
+
 
 # Usage
 
 After downloading the script, run it with the following command:
 
 ```bash
-./pa2.sh
+pa2.sh
 ```
-^^ to be fixed later too
+
 
 It will print out the difference between your output and the correct output,
 using the `diff` command. Lack of any output between the set of "=========="
@@ -43,9 +43,5 @@ means that your program is running correctly.
 between any of the pairs of equal signs or if any unit tests fail.
 
 ## Removal
-
-
-You can delete the test and all other downloaded/generated files with:
-`rm -f pa2.sh diff*.txt out*.txt model-out*.txt QueensUnitTests.c`.
 
 Before you run the pa2.sh, make sure you delete every extra files except for those files to be submitted.
