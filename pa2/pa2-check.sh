@@ -208,7 +208,6 @@ timeout 6 ./ModelQueensTest -v
 #> QueensTest-out.txt &>> QueensTest-out.txt
 cat QueensTest-out.txt
 
-rm -f *out[0-9].txt
-
+rm -f diff*.txt out*.txt model-out*.txt
 
 rm -f *.o ModelQueensTest* garbage*
