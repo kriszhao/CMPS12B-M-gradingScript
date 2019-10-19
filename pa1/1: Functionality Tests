@@ -1,0 +1,37 @@
+1: Functionality Tests
+1.desc.1: Failed 1 test
+1.desc.2: Failed 2 tests
+1.desc.3: Failed 3 tests
+1.desc.4: Failed 4 tests
+1.desc.5: Failed 5 tests
+1.desc.6: Failed 6 tests
+1.desc.7: Failed 7 tests
+1.desc.8: Failed 8 tests
+1.desc.9: Failed 9 tests
+1.desc.10: Doesn't compile
+1.maxpts: 30
+1.realpoints: 30 - 3 * numerOfFailedTests
+2: Unit Tests
+2.desc.1: Failed 1 unit test
+2.desc.2: Failed 2 unit tests
+2.desc.3: Failed 3 unit tests
+2.desc.4: Failed 4 unit tests
+2.desc.4: Failed 5 unit tests
+2.desc.2: Doesn't compile
+2.maxpts: 40
+2.realpoints: 40 - 8 * numerOfFailedTests
+4: Makefile
+4.desc.1: Makefile wouldn't correctly compile a jarfile called Subset
+4.desc.2: Makefile doesn't excist
+4.maxpts: 5
+5: README
+5.desc.1: README doesn't exist
+5.desc.2: README doesn't have the file name or the description is missing
+5.maxpts: 5
+3: Charity Buffer/ format
+3.desc.1: Had to re-evaluate student submission when grading originally correct
+3.desc.2: Inconsistent Formatting
+3.desc.3: No Valid Comment Block
+3.desc.4: Unacceptable Formatting
+3.desc.5: Subset.c doesn't excist
+3.maxpts: 20

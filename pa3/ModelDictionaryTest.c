@@ -1,4 +1,5 @@
 //ModelDictionaryTest.c
+#define _GNU_SOURCE
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
@@ -12,7 +13,7 @@
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#define _GNU_SOURCE
+
 #define bool _Bool
 //#define main main_ignore
 #include "Dictionary.h"
