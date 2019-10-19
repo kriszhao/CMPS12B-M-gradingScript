@@ -4,7 +4,7 @@
 # (run within your pa3 directory to test your code)
 
 #SRCDIR=https://raw.githubusercontent.com/legendddhgf/cmps012b-pt.w18.grading/master/pa3
-SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa3
+SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa3
 EXE="pa3-check.sh"
 SCRIPT=$(mktemp)
 

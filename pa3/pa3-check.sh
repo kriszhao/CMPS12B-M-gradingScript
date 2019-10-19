@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
-SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa3
-EXAMP=https://classes.soe.ucsc.edu/cmps012b/Summer19/Examples/Programs/pa3
+SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa3
+EXAMP=https://classes.soe.ucsc.edu/cmps015/Fall19/Examples/Programs/pa3
 
 if [ ! -e backup ]; then
   echo "WARNING: a backup has been created for you in the \"backup\" folder"
