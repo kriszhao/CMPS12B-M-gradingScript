@@ -3,7 +3,7 @@
 SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa1/
 
 NUMTESTS=9
-PNTSPERTEST=5
+PNTSPERTEST=3
 let MAXPTS=$NUMTESTS*$PNTSPERTEST
 
 if [ ! -e backup ]; then

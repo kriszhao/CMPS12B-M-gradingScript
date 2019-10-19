@@ -26,8 +26,8 @@ jmp_buf test_crash;
 int test_count;
 
 #define FIRST_TEST setToString1_test
-#define MAXSCORE 30
-#define PNTSPERTEST 6
+#define MAXSCORE 40
+#define PNTSPERTEST 8
 #define BREAKER_TEST_RANGE 20000
 const char origtempstr[20*BREAKER_TEST_RANGE];
 enum Test_e {
