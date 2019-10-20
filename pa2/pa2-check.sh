@@ -56,7 +56,7 @@ TEST10="12"
 
 # Run tests
 NUMTESTS=10
-PNTSPERTEST=1.5
+PNTSPERTEST=2
 let MAXPTS=$NUMTESTS*$PNTSPERTEST
 testspassed=$(expr 0)
 echo "Please be warned that the following tests discard all output to stdout/stderr"
