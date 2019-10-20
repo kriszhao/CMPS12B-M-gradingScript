@@ -206,7 +206,7 @@ make -f Makefile1 ModelQueensTest
 
 timeout 6 ./ModelQueensTest -v 
 #> QueensTest-out.txt &>> QueensTest-out.txt
-cat QueensTest-out.txt
+#cat QueensTest-out.txt
 
 rm -f diff*.txt out*.txt *out*.txt Makefile1
 
