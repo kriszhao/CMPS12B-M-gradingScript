@@ -27,8 +27,8 @@ int test_count;
 
     // static boolean verbose;
 #define FIRST_TEST printBoard_test
-#define MAXSCORE 50
-#define PNTSPERTEST 10
+#define MAXSCORE 40
+#define PNTSPERTEST 8
 #define BREAKER_TEST_RANGE 20000
 const char origtempstr[20*BREAKER_TEST_RANGE];
 enum Test_e {
