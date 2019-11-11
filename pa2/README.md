@@ -1,4 +1,4 @@
-# cmps012b-pt.F19/pa2
+# cse015-pt.F19/pa2
 
 The following is a set of performance tests to run on your N-Queens program.
 We have made this available to you to check your work before making your final
