@@ -1,4 +1,4 @@
-# cmps012b-pt.u19/pa3
+# cse015-pt.f19/pa3
 
 The following is a set of performance tests to run on your Dictionary program.
 
