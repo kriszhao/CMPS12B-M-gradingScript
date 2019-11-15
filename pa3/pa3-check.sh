@@ -66,4 +66,4 @@ echo ""
 
 rm -f *out.txt
 
-rm -f *.class ModelDictionaryTest.java garbage*
+rm -f ModelDictionaryTest ModelDictionaryTest.c garbage*
