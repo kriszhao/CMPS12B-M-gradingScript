@@ -29,7 +29,7 @@ int test_count;
 
     // static bool verbose;
 #define FIRST_TEST isEmpty_test1
-#define MAXSCORE 80
+#define MAXSCORE 90
 #define PNTSPERTEST 10
 #define BREAKER_TEST_RANGE 1000
 const char origtempstr[20*BREAKER_TEST_RANGE];
@@ -42,6 +42,7 @@ enum Test_e {
     peek_test2,
     toString_test1,
     toString_test2,
+    equals_test1
     exception_test1,
 
   NUM_TESTS,
@@ -221,12 +222,10 @@ int runTest(int test) {
         dequeueAll(B);
         if (length(A)  != 0 || length(B)  != 0) return 4;
       } else if(test == peek_test1) {
-        // should be NULL
-        if (peek(A)!=peek(B)) return 1;
             enqueue(A, 1);
-        if (peek(A) != 1 || peek(B) != NULL) return 2;
+        if (peek(A) != 1) return 1;
             enqueue(B, 123);
-        if (peek(B) != 123) return 3;
+        if (peek(B) != 123) return 2;
       } else if(test == peek_test2) {
 
         for (int i = 0; i < BREAKER_TEST_RANGE; i++) {
