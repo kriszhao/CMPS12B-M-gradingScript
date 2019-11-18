@@ -115,6 +115,6 @@ cat QueueTest-out.txt
 echo ""
 echo ""
 
-rm -f *out.txt
+rm -f *.txt
 
 rm -f *.o ModelQueueTest ModelQueueTest.c garbage*
