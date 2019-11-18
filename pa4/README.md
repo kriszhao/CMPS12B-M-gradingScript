@@ -1,6 +1,6 @@
-# cmps012b-pt.u19/pa4
+# cse015-pt.F19/pa4
 
-The following is a set of performance tests to run on your Dictionary ADT.
+The following is a set of performance tests to run on your pa4.
 
 ## Installation
 
@@ -19,7 +19,7 @@ After installation, you can run the script with this line:
 ```bash
 ./pa4.sh
 ```
-The tests will include unit tests from ModelDictionaryTest.c which will
+The tests will include unit tests from ModelQueueTest.c which will
 provide information on which tests were passed / whether you had an exception
 in your code / your final score for the unit tests. You will also be tested on
 memory leaks
