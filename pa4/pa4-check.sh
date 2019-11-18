@@ -3,7 +3,7 @@
 SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
 EXAMP=https://raw.githubusercontent.com/legendddhgf/cmps012b-pt.w18.grading/master/pa4
 
-NUMTESTS=11
+NUMTESTS=10
 PNTSPERTEST=5
 let MAXPTS=$NUMTESTS*$PNTSPERTEST
 
@@ -66,7 +66,13 @@ for NUM in $(seq 1 $NUMTESTS); do
   cat diff-trc$NUM.txt
   echo "=========="
 
-  cat diff-rpt$NUM.txt diff-trc$NUM.txt > diff$NUM.txt
+  cat diff-rpt$NUM.txt > diff$NUM.txt
+
+  if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then
+    let simulationtestspassed+=1
+  fi
+
+  cat diff-trc$NUM.txt > diff$NUM.txt
 
   if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then
     let simulationtestspassed+=1
