@@ -4,8 +4,8 @@ SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master
 EXAMP=https://raw.githubusercontent.com/legendddhgf/cmps012b-pt.w18.grading/master/pa4
 
 NUMTESTS=10
-PNTSPERTEST=5
-let MAXPTS=$NUMTESTS*$PNTSPERTEST
+PNTSPERTEST=1
+let MAXPTS=$NUMTESTS*$PNTSPERTEST*2
 
 if [ ! -e backup ]; then
   echo "WARNING: a backup has been created for you in the \"backup\" folder"
@@ -87,7 +87,7 @@ echo ""
 
 let simulationtestpoints=$PNTSPERTEST*$simulationtestspassed
 
-echo "Passed $simulationtestspassed / $NUMTESTS Simulation tests"
+echo "Passed $simulationtestspassed Simulation tests"
 echo "This gives a total of $simulationtestpoints / $MAXPTS points"
 
 echo ""
