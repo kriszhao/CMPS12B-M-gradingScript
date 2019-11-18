@@ -42,7 +42,7 @@ enum Test_e {
     peek_test2,
     toString_test1,
     toString_test2,
-    equals_test1
+    equals_test1,
     exception_test1,
 
   NUM_TESTS,
