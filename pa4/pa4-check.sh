@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 
 SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
-EXAMP=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
+EXAMP=https://raw.githubusercontent.com/legendddhgf/cmps012b-pt.w18.grading/master/pa4
 
 NUMTESTS=5
 PNTSPERTEST=5
