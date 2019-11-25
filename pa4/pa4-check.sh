@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
 SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
-EXAMP=https://raw.githubusercontent.com/legendddhgf/cmps012b-pt.w18.grading/master/pa4
+EXAMP=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
 
-NUMTESTS=10
-PNTSPERTEST=1
-let MAXPTS=$NUMTESTS*$PNTSPERTEST*2
+NUMTESTS=5
+PNTSPERTEST=5
+let MAXPTS=$NUMTESTS*$PNTSPERTEST
 
 if [ ! -e backup ]; then
   echo "WARNING: a backup has been created for you in the \"backup\" folder"
@@ -66,13 +66,7 @@ for NUM in $(seq 1 $NUMTESTS); do
   cat diff-trc$NUM.txt
   echo "=========="
 
-  cat diff-rpt$NUM.txt > diff$NUM.txt
-
-  if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then
-    let simulationtestspassed+=1
-  fi
-
-  cat diff-trc$NUM.txt > diff$NUM.txt
+  cat diff-rpt$NUM.txt diff-trc$NUM.txt > diff$NUM.txt
 
   if [ -e diff$NUM.txt ] && [[ ! -s diff$NUM.txt ]]; then
     let simulationtestspassed+=1
