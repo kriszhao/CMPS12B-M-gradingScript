@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa4
+SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa5
 
 if [ ! -e backup ]; then
   echo "WARNING: a backup has been created for you in the \"backup\" folder"
