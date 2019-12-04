@@ -3,7 +3,7 @@
 # usage: pa5.sh
 # (run within your pa5 directory to test your code)
 
-SRCDIR=https://raw.githubusercontent.com/Evelynchengusa/CMPS12B-M-gradingScript/master/pa5
+SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa5
 EXE1="pa5-make-check.sh"
 EXE2="pa5-dictionary-check.sh"
 
