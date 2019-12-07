@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa4
+SRCDIR=https://raw.githubusercontent.com/kriszhao/CMPS12B-M-gradingScript/master/pa5
 
 
 if [ ! -e backup ]; then
@@ -37,7 +37,7 @@ make clean
 
 if [ -e DictionaryTest ] || [ -e *.o ]; then
   echo "WARNING: Makefile didn't successfully clean all files"
-  rm -f DictionaryTest *.class
+  rm -f DictionaryTest *.o
 fi
 
 echo ""
